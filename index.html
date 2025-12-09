@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OKX 闪赚 | 简单持币，轻松获得新币</title>
+    <meta name="description" content="OKX 闪赚 - 用你已有的加密货币，参与优质新项目的早期分发。简单、安全、零门槛。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --bg-elevated: #111111;
+            --bg-subtle: #161616;
+            --text: #fafafa;
+            --text-secondary: #8a8a8a;
+            --text-muted: #555555;
+            --accent: #e8e8e8;
+            --accent-subtle: rgba(255, 255, 255, 0.06);
+            --border: rgba(255, 255, 255, 0.08);
+            --gradient: linear-gradient(135deg, #fafafa 0%, #d0d0d0 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Subtle animated gradient background */
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(120, 119, 198, 0.08), transparent),
+                radial-gradient(ellipse 60% 40% at 80% 100%, rgba(255, 255, 255, 0.03), transparent);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 0;
+            transition: all 0.4s ease;
+        }
+
+        header.scrolled {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 500;
+            letter-spacing: -0.5px;
+            color: var(--text);
+        }
+
+        .logo span {
+            opacity: 0.5;
+            font-weight: 400;
+        }
+
+        .header-cta {
+            background: var(--text);
+            color: var(--bg);
+            padding: 12px 28px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .header-cta:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.15);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 140px 0 100px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 720px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: var(--accent-subtle);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(42px, 8vw, 72px);
+            font-weight: 400;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 28px;
+            animation: fadeInUp 0.8s ease 0.1s both;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            opacity: 0.6;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin: 0 auto 48px;
+            font-weight: 300;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--text);
+            color: var(--bg);
+            padding: 18px 40px;
+            border-radius: 100px;
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: fadeInUp 0.8s ease 0.3s both;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-cta svg {
+            transition: transform 0.3s ease;
+        }
+
+        .hero-cta:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: fadeInUp 0.8s ease 0.5s both;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, var(--text-muted), transparent);
+            animation: scrollLine 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollLine {
+            0%, 100% { transform: scaleY(1); opacity: 0.5; }
+            50% { transform: scaleY(0.5); opacity: 1; }
+        }
+
+        /* What is Section */
+        .what-section {
+            padding: 120px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-label {
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 400;
+            letter-spacing: -1px;
+            margin-bottom: 48px;
+            max-width: 600px;
+        }
+
+        .what-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .what-content p {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            line-height: 1.8;
+        }
+
+        .what-content p strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .what-visual {
+            position: relative;
+        }
+
+        .visual-card {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .visual-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+        }
+
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--accent-subtle);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .card-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--text);
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* How it works */
+        .how-section {
+            padding: 120px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .step {
+            text-align: center;
+            padding: 40px 24px;
+            border-radius: 24px;
+            background: transparent;
+            transition: all 0.4s ease;
+        }
+
+        .step:hover {
+            background: var(--accent-subtle);
+        }
+
+        .step-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 64px;
+            font-weight: 400;
+            color: var(--text-muted);
+            opacity: 0.3;
+            line-height: 1;
+            margin-bottom: 24px;
+        }
+
+        .step h3 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .step p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Features */
+        .features-section {
+            padding: 120px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 36px;
+            transition: all 0.4s ease;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--accent-subtle);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--text);
+        }
+
+        .feature-card h3 {
+            font-size: 17px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Current Activity */
+        .activity-section {
+            padding: 120px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .activity-card {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 32px;
+            padding: 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .activity-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.02) 0%, transparent 50%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .activity-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .activity-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 100px;
+            font-size: 14px;
+            color: #22c55e;
+            margin-bottom: 32px;
+        }
+
+        .activity-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 400;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+        }
+
+        .activity-desc {
+            font-size: 17px;
+            color: var(--text-secondary);
+            max-width: 560px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .activity-tokens {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .token-pill {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--accent-subtle);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .token-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .token-dot.okb { background: #4a9fff; }
+        .token-dot.usdt { background: #26a69a; }
+        .token-dot.btc { background: #f7931a; }
+        .token-dot.eth { background: #627eea; }
+        .token-dot.ada { background: #0033ad; }
+
+        .activity-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--text);
+            color: var(--bg);
+            padding: 18px 48px;
+            border-radius: 100px;
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .activity-cta:hover {
+            transform: scale(1.03);
+            box-shadow: 0 20px 50px rgba(255, 255, 255, 0.2);
+        }
+
+        .countdown-text {
+            display: block;
+            margin-top: 20px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-text {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .footer-link {
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-link:hover {
+            color: var(--text);
+        }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            max-width: 440px;
+            width: 100%;
+            padding: 48px 40px;
+            position: relative;
+            animation: modalIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 36px;
+            height: 36px;
+            background: var(--accent-subtle);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text);
+        }
+
+        .modal-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--accent-subtle);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+
+        .modal-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--text);
+        }
+
+        .modal h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .modal-desc {
+            color: var(--text-secondary);
+            text-align: center;
+            font-size: 15px;
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        .modal-steps {
+            margin-bottom: 28px;
+        }
+
+        .modal-step {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+            align-items: flex-start;
+        }
+
+        .modal-step-num {
+            width: 28px;
+            height: 28px;
+            background: var(--accent-subtle);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .modal-step-text {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            padding-top: 4px;
+        }
+
+        .link-input-wrap {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 14px 16px;
+            margin-bottom: 16px;
+        }
+
+        .link-input-wrap input {
+            width: 100%;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 12px;
+            font-family: monospace;
+            outline: none;
+        }
+
+        .copy-btn {
+            width: 100%;
+            background: var(--text);
+            color: var(--bg);
+            border: none;
+            padding: 16px;
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .copy-btn:hover {
+            transform: scale(1.02);
+        }
+
+        .copy-btn.copied {
+            background: #22c55e;
+            color: white;
+        }
+
+        .modal-tip {
+            text-align: center;
+            margin-top: 16px;
+            padding: 14px;
+            background: rgba(251, 191, 36, 0.08);
+            border: 1px solid rgba(251, 191, 36, 0.15);
+            border-radius: 12px;
+            font-size: 13px;
+            color: #fbbf24;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .what-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .step {
+                text-align: left;
+                display: grid;
+                grid-template-columns: auto 1fr;
+                gap: 20px;
+                padding: 24px;
+            }
+
+            .step-number {
+                font-size: 48px;
+                margin-bottom: 0;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .activity-card {
+                padding: 40px 24px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                padding: 120px 0 80px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .scroll-indicator {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">闪赚 <span>by OKX</span></div>
+                <button class="header-cta" onclick="handleRegisterClick()">立即参与</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span>NIGHT 代币活动进行中</span>
+                </div>
+                <h1 class="hero-title">持币生息<br><em>零门槛获得新币</em></h1>
+                <p class="hero-subtitle">
+                    闪赚是 OKX 推出的新币分发服务。用你已持有的加密货币，轻松获得优质新项目代币。
+                </p>
+                <button class="hero-cta" onclick="handleRegisterClick()">
+                    开始使用
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>了解更多</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- What is 闪赚 -->
+    <section class="what-section" id="what">
+        <div class="container">
+            <div class="what-grid">
+                <div class="what-content">
+                    <div class="section-label">什么是闪赚</div>
+                    <h2 class="section-title">用现有资产<br>参与新币首发</h2>
+                    <p>
+                        <strong>闪赚本质上是一种「持币生息」服务。</strong>你无需购买新币，只需将已持有的 BTC、ETH、USDT 等主流加密货币存入，即可按比例获得新项目代币的分发。
+                    </p>
+                    <p>
+                        这是 OKX 平台为推广优质新项目而提供的<strong>活动补贴</strong>。项目方和平台共同出资，让参与者能以极低成本获得新币。
+                    </p>
+                    <p>
+                        整个过程简单、透明。存入资产依然属于你，活动结束后本金和新币会一并返还。
+                    </p>
+                </div>
+                <div class="what-visual">
+                    <div class="visual-card">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">简单理解</h3>
+                        <p class="card-desc">
+                            把它想象成银行定存送礼品——只不过这里的「礼品」是有价值的新项目代币，而且通常数量可观。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how-section" id="how">
+        <div class="container">
+            <div class="section-label">如何参与</div>
+            <h2 class="section-title">三步完成</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <div>
+                        <h3>注册并存入资产</h3>
+                        <p>注册 OKX 账户，将支持的加密货币（如 BTC、ETH、USDT）存入平台</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <div>
+                        <h3>一键参与闪赚</h3>
+                        <p>在闪赚页面选择活动，点击参与。无需复杂操作，一键完成</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <div>
+                        <h3>等待结算领取</h3>
+                        <p>活动结束后，本金返还，同时收到新币。可选择持有或交易</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="section-label">为什么选择闪赚</div>
+            <h2 class="section-title">安全、简单、透明</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <h3>资产安全有保障</h3>
+                    <p>你的资产始终在 OKX 平台托管，活动期间本金受保护，结束后原额返还</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <h3>零门槛参与</h3>
+                    <p>无需购买新币，用现有资产即可参与。小额资金也能获得相应比例的分发</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.66 0 3-4 3-9s-1.34-9-3-9m0 18c-1.66 0-3-4-3-9s1.34-9 3-9m-9 9a9 9 0 019-9"/>
+                        </svg>
+                    </div>
+                    <h3>优质项目精选</h3>
+                    <p>闪赚项目经过 OKX 团队筛选，通常是有实力背景和发展潜力的新项目</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3>规则清晰透明</h3>
+                    <p>分发规则公开透明，按存入金额比例分配。早参与、多存入，获得更多</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Current Activity -->
+    <section class="activity-section" id="activity">
+        <div class="container">
+            <div class="activity-card">
+                <div class="activity-content">
+                    <div class="activity-badge">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                        活动进行中
+                    </div>
+                    <h2 class="activity-title">Midnight NIGHT 代币</h2>
+                    <p class="activity-desc">
+                        Cardano 生态隐私链 Midnight 的原生代币首发。采用零知识证明技术，由 Cardano 创始人主导开发。本次活动奖池充足，参与即可获得 NIGHT 代币分发。
+                    </p>
+                    <div class="activity-tokens">
+                        <div class="token-pill">
+                            <span class="token-dot okb"></span>
+                            OKB
+                        </div>
+                        <div class="token-pill">
+                            <span class="token-dot usdt"></span>
+                            USDT
+                        </div>
+                        <div class="token-pill">
+                            <span class="token-dot btc"></span>
+                            BTC
+                        </div>
+                        <div class="token-pill">
+                            <span class="token-dot eth"></span>
+                            ETH
+                        </div>
+                        <div class="token-pill">
+                            <span class="token-dot ada"></span>
+                            ADA
+                        </div>
+                    </div>
+                    <button class="activity-cta" onclick="handleRegisterClick()">
+                        立即参与
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                    <span class="countdown-text" id="countdown">活动剩余时间计算中...</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-text">© 2025 OKX 闪赚指南 · 投资需谨慎，请仔细评估风险</div>
+                <div class="footer-links">
+                    <a href="https://midnight.network/" target="_blank" class="footer-link">Midnight 官网</a>
+                    <a href="https://www.okx.com/jumpstart" target="_blank" class="footer-link">OKX Jumpstart</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WeChat Modal -->
+    <div class="modal-overlay" id="wechatModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+            </button>
+            <div class="modal-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 16v-4M12 8h.01"/>
+                </svg>
+            </div>
+            <h2>微信环境提示</h2>
+            <p class="modal-desc">请复制链接到浏览器打开完成注册</p>
+            <div class="modal-steps">
+                <div class="modal-step">
+                    <div class="modal-step-num">1</div>
+                    <div class="modal-step-text">点击下方按钮复制链接</div>
+                </div>
+                <div class="modal-step">
+                    <div class="modal-step-num">2</div>
+                    <div class="modal-step-text">打开 Safari 或 Chrome 浏览器</div>
+                </div>
+                <div class="modal-step">
+                    <div class="modal-step-num">3</div>
+                    <div class="modal-step-text">粘贴链接并访问</div>
+                </div>
+            </div>
+            <div class="link-input-wrap">
+                <input type="text" id="registerLink" value="https://www.oyicn.link/ul/6CngT5?channelId=7746860" readonly>
+            </div>
+            <button class="copy-btn" id="copyBtn" onclick="copyLink()">复制链接</button>
+            <div class="modal-tip">💡 点击右上角菜单「在浏览器中打开」更快捷</div>
+        </div>
+    </div>
+
+    <script>
+        const REGISTER_URL = 'https://www.oyicn.link/ul/6CngT5?channelId=7746860';
+
+        function isWechat() {
+            return /micromessenger/i.test(navigator.userAgent);
+        }
+
+        function handleRegisterClick() {
+            if (isWechat()) {
+                document.getElementById('wechatModal').classList.add('active');
+            } else {
+                window.open(REGISTER_URL, '_blank');
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('wechatModal').classList.remove('active');
+        }
+
+        function copyLink() {
+            const input = document.getElementById('registerLink');
+            input.select();
+            navigator.clipboard.writeText(input.value).then(() => {
+                const btn = document.getElementById('copyBtn');
+                btn.textContent = '✓ 已复制';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = '复制链接';
+                    btn.classList.remove('copied');
+                }, 2500);
+            });
+        }
+
+        // Countdown
+        function updateCountdown() {
+            const end = new Date('2025-12-11T04:00:00+08:00').getTime();
+            const now = Date.now();
+            const diff = end - now;
+
+            if (diff > 0) {
+                const d = Math.floor(diff / 86400000);
+                const h = Math.floor((diff % 86400000) / 3600000);
+                const m = Math.floor((diff % 3600000) / 60000);
+                document.getElementById('countdown').textContent = 
+                    `活动剩余 ${d} 天 ${h} 小时 ${m} 分钟`;
+            } else {
+                document.getElementById('countdown').textContent = '活动已结束';
+            }
+        }
+        updateCountdown();
+        setInterval(updateCountdown, 60000);
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Modal overlay click
+        document.getElementById('wechatModal').addEventListener('click', (e) => {
+            if (e.target.id === 'wechatModal') closeModal();
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
